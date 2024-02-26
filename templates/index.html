@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envoyer un message</title>
+</head>
+<body>
+    <h1>Envoyer un message par e-mail</h1>
+    <form method="post">
+        <label for="to">Destinataire:</label><br>
+        <input type="email" id="to" name="to" required><br><br>
+        <label for="subject">Sujet:</label><br>
+        <input type="text" id="subject" name="subject" required><br><br>
+        <label for="body">Message:</label><br>
+        <textarea id="body" name="body" rows="4" required></textarea><br><br>
+        <input type="submit" name="send" value="Envoyer">
+        <input type="submit" name="cancel" value="Annuler">
+    </form>
+</body>
+</html>
