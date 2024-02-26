@@ -6,15 +6,21 @@
     <title>Envoyer un message</title>
 </head>
 <body>
-    <h1>Envoyer un message par e-mail</h1>
+    <h1>Envoyer un message</h1>
     <form method="post">
         <label for="to">Destinataire:</label><br>
-        <input type="email" id="to" name="to" required><br><br>
+        <select id="to" name="to" required>
+            {% for name, info in recipients.items() %}
+                <option value="{{ name }}">{{ name }}</option>
+            {% endfor %}
+        </select><br><br>
         <label for="subject">Sujet:</label><br>
         <input type="text" id="subject" name="subject" required><br><br>
         <label for="body">Message:</label><br>
         <textarea id="body" name="body" rows="4" required></textarea><br><br>
-        <input type="submit" name="send" value="Envoyer">
+        <p>Mode d'envoi</p>
+        <input type="submit" name="send_email" value="E-mail">
+        <input type="submit" name="send_sms" value="SMS">
         <input type="submit" name="cancel" value="Annuler">
     </form>
 </body>
