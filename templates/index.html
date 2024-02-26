@@ -6,21 +6,22 @@
     <title>Envoyer un message</title>
 </head>
 <body>
-    <h1>Envoyer un message</h1>
-    <form method="post">
+    <h1>Envoyer un message par e-mail ou SMS</h1>
+    <form method="post" enctype="multipart/form-data">
         <label for="to">Destinataire:</label><br>
         <select id="to" name="to" required>
-            {% for name, info in recipients.items() %}
-                <option value="{{ name }}">{{ name }}</option>
+            {% for name, _ in recipients.items() %}
+            <option value="{{ name }}">{{ name }}</option>
             {% endfor %}
         </select><br><br>
         <label for="subject">Sujet:</label><br>
         <input type="text" id="subject" name="subject" required><br><br>
         <label for="body">Message:</label><br>
         <textarea id="body" name="body" rows="4" required></textarea><br><br>
-        <p>Mode d'envoi</p>
-        <input type="submit" name="send_email" value="E-mail">
-        <input type="submit" name="send_sms" value="SMS">
+        <label for="file">Pièce jointe:</label><br>
+        <input type="file" id="file" name="file"><br><br>
+        <input type="submit" name="send_email" value="Envoyer par e-mail">
+        <input type="submit" name="send_sms" value="Envoyer par SMS">
         <input type="submit" name="cancel" value="Annuler">
     </form>
 </body>

@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_mail import Mail, Message
 from twilio.rest import Client
 from config import *
+import os
 
 app = Flask(__name__)
 
@@ -24,10 +25,18 @@ mail = Mail(app)
 # Initialisation du client Twilio
 client = Client(account_sid, auth_token)
 
-# Fonction pour envoyer un e-mail
-def send_email(to, subject, body):
+# Vérifier et créer le répertoire "uploads" s'il n'existe pas
+UPLOAD_FOLDER = 'uploads'
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
+
+# Fonction pour envoyer un e-mail avec une pièce jointe
+def send_email_with_attachment(to, subject, body, file_path):
     msg = Message(subject, sender=app.config['MAIL_USERNAME'], recipients=[to])
     msg.body = body
+    if file_path is not None:  # Vérifier si file_path n'est pas None
+        with app.open_resource(file_path) as attachment:
+            msg.attach(filename=file_path, content_type='application/octet-stream', data=attachment.read())
     mail.send(msg)
 
 # Fonction pour envoyer un SMS
@@ -52,7 +61,13 @@ def index():
 
         if recipient_info:
             if 'send_email' in request.form:
-                send_email(recipient_info['email'], subject, body)
+                file = request.files['file']
+                if file:
+                    file_path = os.path.join(UPLOAD_FOLDER, file.filename)
+                    file.save(file_path)
+                    send_email_with_attachment(recipient_info['email'], subject, body, file_path)
+                else:
+                    send_email_with_attachment(recipient_info['email'], subject, body, None)  # Utiliser None comme file_path
             elif 'send_sms' in request.form:
                 send_sms(recipient_info['phone'], body)
             return redirect(url_for('success'))
