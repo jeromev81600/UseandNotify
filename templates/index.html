@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" type="text/css" href="static/style.css" />
     <title>Envoyer un message</title>
 </head>
 <body>
-    <h1>Envoyer un message par e-mail ou SMS</h1>
+<nav></nav>
+<section class="mainSection">
+    <section class="contactSection">
+<article class="formArticle">
+    <aside class="formAside">
+    <h1>Contacter un autre joueur</h1>
     <form method="post" enctype="multipart/form-data">
         <label for="to">Destinataire:</label><br>
         <select id="to" name="to" required>
@@ -15,14 +21,22 @@
             {% endfor %}
         </select><br><br>
         <label for="subject">Sujet:</label><br>
-        <input type="text" id="subject" name="subject" required><br><br>
+        <input class="subjectInput" type="text" id="subject" name="subject" required><br><br>
         <label for="body">Message:</label><br>
         <textarea id="body" name="body" rows="4" required></textarea><br><br>
         <label for="file">Pièce jointe:</label><br>
         <input type="file" id="file" name="file"><br><br>
-        <input type="submit" name="send_email" value="Envoyer par e-mail">
-        <input type="submit" name="send_sms" value="Envoyer par SMS">
-        <input type="submit" name="cancel" value="Annuler">
+        <div class="divSubmitButtons">
+            <input type="submit" name="send_email" value="Envoyer par e-mail">
+            <input type="submit" name="send_sms" value="Envoyer par SMS">
+            <input type="submit" name="cancel" value="Annuler">
+        </div>
     </form>
+        </aside>
+    </article>
+    <article class="pluginsAside" ></article>
+        </section>
+<article class="newsArticle"></article>
+</section>
 </body>
 </html>
