@@ -3,33 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" type="text/css" href="static/style.css" />
+    <link rel="stylesheet" type="text/css" href="static/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Electrolize&family=Holtwood+One+SC&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
     <title>Envoyer un message</title>
 </head>
 <body>
-<nav></nav>
+<nav>
+<h1 class="titleH1Nav">Tableau de bord</h1>
+</nav>
 <section class="mainSection">
-    <section class="contactSection">
-<article class="formArticle">
-    <aside class="formAside">
-    <h1>Contacter un autre joueur</h1>
-    <form method="post" enctype="multipart/form-data">
-        <label for="to">Destinataire:</label><br>
-        <select id="to" name="to" required>
-            {% for name, _ in recipients.items() %}
-            <option value="{{ name }}">{{ name }}</option>
-            {% endfor %}
-        </select><br><br>
-        <label for="subject">Sujet:</label><br>
+    <section class="contactAndPlugSection">
+     <article class="contactArticle">
+      <aside class="formAside">
+       <h2 class="titleH2Form">Contacter un autre joueur</h2>
+        <form class="contactForm" method="post" enctype="multipart/form-data">
+         <label for="to">Destinataire :</label><br>
+           <select id="to" name="to" required>
+             {% for name, _ in recipients.items() %}
+             <option value="{{ name }}">{{ name }}</option>
+             {% endfor %}
+           </select><br><br>
+         <label for="subject">Sujet :</label><br>
         <input class="subjectInput" type="text" id="subject" name="subject" required><br><br>
-        <label for="body">Message:</label><br>
-        <textarea id="body" name="body" rows="4" required></textarea><br><br>
-        <label for="file">Pièce jointe:</label><br>
+        <label for="bodyMessage">Message :</label><br>
+        <textarea id="bodyMessage" name="body" rows="4" required></textarea><br><br>
+        <label for="file">Pièce jointe :</label><br>
         <input type="file" id="file" name="file"><br><br>
         <div class="divSubmitButtons">
             <input type="submit" name="send_email" value="Envoyer par e-mail">
             <input type="submit" name="send_sms" value="Envoyer par SMS">
-            <input type="submit" name="cancel" value="Annuler">
         </div>
     </form>
         </aside>

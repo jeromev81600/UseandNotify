@@ -1,105 +1,267 @@
+/*------------------------------||[ CSS - index.html ]||---------------------------------*/
+
+/* - [ MOBILE FIRST ] - */
+
+/*| ---------|- Variables CSS -|-------- |*/
+
 :root{
 --backgroundArticle:rgba(13,46,66,.5);
 --backgroundInput: linear-gradient(180deg, rgba(0,47,72,0.5) 11%, rgba(0,47,72,0.15868354177608546) 49%, rgba(0,47,72,0.5) 86%);
+
+--blueBorder:1px solid #0a2839;
+--lightBlueBorder:1px solid #00d2ff;
+--boldBlueBorder:1px solid #0a2839;
+--doubleLightBlueBorder:4px double #00d2ff;
+
+--marginTopInputAndTextArea : 7px;
+--paddingInputAndTextArea : 5px 0 0 5px;
+
+--fontFamilyMainTitles:Orbitron;
+--fontFamilyTextAndTitles : Electrolize;
+--textColor :white;
 --textInputColor:#00d2ff;
---border:1px solid #0a2839;
+--h1Color:white;
+--h2Color:#00d2ff;
+--fontSizeH1:100%;
+--fontSizeH2:100%;
 }
+
+
+/*| ------|- Corps du document -|------- |*/
 
 body {
   min-height: 100vh;
   margin: 2vh 1vh 2vh 1vh;
   background: black;
-    display: flex;
-    flex-direction:column;
+  display: flex;
+  flex-direction:column;
 }
 
-/* Titres et texte */
-h1 {
-  color: white;
+
+/*| -------|- Eléments globaux -|------- |*/
+
+h1{
+ text-transform: uppercase;
+ font-size:var(--fontSizeH1);
+ font-family:var(--fontFamilyMainTitles);
+ color:var(--h1Color);
 }
+
+h2 {
+  text-transform: uppercase;
+  font-size:var(--fontSizeH2);
+  font-family:var(--fontFamilyTextAndTitles);
+  color: var(--h2Color);
+}
+
 p {
-  color: white;
+  color: var(--textColor);
+  font-family:var(--fontFamilyTextAndTitles);
 }
 
-/* Barre de navigation */
+
+/*| ------|- Barre de navigation -|----- |*/
+
 nav {
-  min-height: 10dvh;
-  border:var(--border);
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ min-height: 10dvh;
+ border:var(--blueBorder);
+ border-top:var(--lightBlueBorder);
+ border-bottom:var(--doubleLightBlueBorder);
+ margin-bottom:1.5vh;
 }
 
-/* Section principale */
+.titleH1Nav{
+ text-align:center;
+ font-size:30px;
+ }
+
+
+/*| ------|- Section principale -|------ |*/
+
 .mainSection {
   display: flex;
+  flex-direction:column;
   height:100dvh;
-  gap:5px;
+  gap:1vh;
 }
 
-/* Sous section contact */
-.contactSection{
-display:flex;
-flex-direction:column;
-width:100%;
-gap:5px;
+/* -- Sous-section contact et plugins -- */
+
+.contactAndPlugSection{
+  display:flex;
+  flex-direction:column;
+  width:100%;
+  gap:1vh;
 }
 
-/* Partie formulaire */
-.formArticle {
-  grid-column: 1;
-  grid-row: 1;
+/* ----- Partie contact ----- */
+
+.contactArticle {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
+  min-height:500px;
   height:calc(100%/1.3);
-  border:var(--border);
+  border:var(--blueBorder);
 }
+
+/* - Formulaire - */
+
+.titleH2Form {
+  margin-top:8%;
+  text-align:center;
+  }
 
 .formAside{
- border-radius:6px;
-padding : 5%;
-background:var(--backgroundArticle);
+  border-radius:6px;
+  width:300px;
+  background:var(--backgroundArticle);
+  border-bottom:var(--lightBlueBorder);
+  border-top:var(--lightBlueBorder);
 }
 
-label{font-size: 11px;
+.contactForm{
+  padding:8%;
+}
+
+label{
+  font-size: 11px;
   text-transform: uppercase;
   color: #fff;
   font-weight: 700;
+  font-family:var(--fontFamilyTextAndTitles);
   }
+
 #to {
   width: 45%;
+  min-height: 25px;
+  border: none;
+  border-radius:6px;
   background:var(--backgroundInput);
-    border: none;
-     border-radius:6px;
+  color: var(--textInputColor);
+  margin-top:var(--marginTopInputAndTextArea);
+  padding:var(--paddingInputAndTextArea);
 }
+
 .subjectInput {
   width: 100%;
+  min-height: 25px;
+  border: none;
+  border-radius:6px;
   background:var(--backgroundInput);
-    border: none;
-     border-radius:6px;
+  color: var(--textInputColor);
+  margin-top:var(--marginTopInputAndTextArea);
+  padding:var(--paddingInputAndTextArea);
 }
-#body {
+
+#bodyMessage {
   width: 100%;
+  border: none;
+  border-radius:6px;
   background:var(--backgroundInput);
-    border: none;
-     border-radius:6px;
+  color: var(--textInputColor);
+  margin-top:var(--marginTopInputAndTextArea);
+  padding:var(--paddingInputAndTextArea);
 }
+
+#file{
+ min-height: 25px;
+ border: none;
+ border-radius:6px;
+ background:var(--backgroundInput);
+ color: var(--textInputColor);
+ margin-top:var(--marginTopInputAndTextArea);
+}
+
 .divSubmitButtons {
   display: flex;
-  background:var(--backgroundInput);
+  gap:1.5vh;
+  margin-top : 20px;
+  margin-right:30px;
+  justify-content:space-between;
+}
+
+input[type="submit"] {
+ padding :5%;
+ max-width:80%;
+ border: none;
+ border-radius:6px;
+ background:var(--backgroundInput);
+ color: var(--textInputColor);
 }
 
 
-/* Partie plugins */
+/* ----- Partie Plugins ----- */
+
 .pluginsAside {
   display: flex;
-border:var(--border);
-height:calc(100%/4);
+  min-height:100px;
+  height:calc(100%/4);
+  border:var(--blueBorder);
 }
 
-/* Partie infos */
+
+/*| ------|- Sous section News -|------ |*/
+
 .newsArticle {
   display: flex;
- border:var(--border);
   min-width: 200px;
+  min-height:200px;
+  border:var(--blueBorder);
+}
+
+
+/* - [ DESKTOP ] - */
+
+@media screen and (min-width: 768px){
+
+/*| ------|- Corps du document -|------- |*/
+/* Style non modifié */
+
+/*| -------|- Eléments globaux -|------- |*/
+/* Style non modifié */
+
+/*| ------|- Barre de navigation -|----- |*/
+/* Style non modifié */
+
+/*| ------|- Section principale -|------ |*/
+
+.mainSection {
+  flex-direction :row;
+}
+
+/* -- Sous-section contact et plugins -- */
+
+.contactAndPlugSection{
+  display:flex;
+  flex-direction:column;
+  width:100%;
+  gap:1vh;
+}
+
+/* ----- Partie contact ----- */
+
+/* - Formulaire - */
+
+.formAside{
+  width:400px;
+ }
+
+.divSubmitButtons {
+justify-content : space-around;
+margin-right:0;
+}
+
+/* ----- Partie Plugins ----- */
+/* Style non modifié */
+
+
+/*| ------|- Sous section News -|------ |*/
+/* Style non modifié */
+
 }

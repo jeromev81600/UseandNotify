@@ -55,7 +55,7 @@ def index():
     if request.method == 'POST':
         to = request.form['to']
         subject = request.form['subject']
-        body = request.form['body']
+        body = request.form['bodyMessage']
 
         recipient_info = recipients.get(to)
 
