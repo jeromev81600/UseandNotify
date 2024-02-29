@@ -31,10 +31,12 @@
 
 body {
   min-height: 100vh;
-  margin: 2vh 1vh 2vh 1vh;
+  margin: 2vh 0 2vh 0;
   background: black;
   display: flex;
   flex-direction:column;
+  background: no-repeat url("./pictures/starsbackground.jpg");
+  background-size: cover;
 }
 
 
@@ -64,24 +66,37 @@ p {
 
 nav {
  display:flex;
- justify-content:center;
+ justify-content:space-between;
  align-items:center;
  min-height: 10dvh;
  border:var(--blueBorder);
  border-top:var(--lightBlueBorder);
  border-bottom:var(--doubleLightBlueBorder);
- margin-bottom:1.5vh;
+ padding:10px;
+}
+
+.logo{
+  width:50%;
+  max-width:200px;
 }
 
 .titleH1Nav{
+ width:100%;
  text-align:center;
- font-size:30px;
+ font-size:35PX;
+ padding-right:25px;
+ color:#a1acb3;
+ transform: rotateX(45deg) rotateY(0deg) rotateZ(0deg);
  }
 
+.rsiImg,.line  {
+  display:none;
+ }
 
 /*| ------|- Section principale -|------ |*/
 
 .mainSection {
+  margin:4.5vh;
   display: flex;
   flex-direction:column;
   height:100dvh;
@@ -108,14 +123,10 @@ nav {
   min-height:500px;
   height:calc(100%/1.3);
   border:var(--blueBorder);
+  padding:20px 0 20px 0;
 }
 
 /* - Formulaire - */
-
-.titleH2Form {
-  margin-top:8%;
-  text-align:center;
-  }
 
 .formAside{
   border-radius:6px;
@@ -124,6 +135,11 @@ nav {
   border-bottom:var(--lightBlueBorder);
   border-top:var(--lightBlueBorder);
 }
+
+.titleH2Form {
+  margin-top:8%;
+  text-align:center;
+  }
 
 .contactForm{
   padding:8%;
@@ -227,7 +243,27 @@ input[type="submit"] {
 /* Style non modifié */
 
 /*| ------|- Barre de navigation -|----- |*/
-/* Style non modifié */
+
+.titleH1Nav{
+  font-size:45px;
+  text-align :center;
+  max-width:600px;
+  padding-right :5px;
+ }
+
+.line{
+ display:block;
+ width:100%;
+ height:2px;
+ background-color:#0a2839;
+}
+
+.rsiImg{
+  display:block;
+  margin-right:25px;
+  width:70px;
+  padding-left:35px;
+ }
 
 /*| ------|- Section principale -|------ |*/
 
