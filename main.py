@@ -77,6 +77,21 @@ def index():
 
     return render_template('index.html', recipients=recipients)
 
+@app.route('/launch_discord')
+def launch_discord():
+    os.startfile(r'C:\Users\jerom\AppData\Local\Discord\app-1.0.9034\Discord.exe')  # Lancer Discord en local
+    return '', 204  # Réponse vide avec code 204 (No Content)
+
+@app.route('/launch_skype')
+def launch_skype():
+    os.startfile(r'C:\Users\jerom\AppData\Local\Microsoft\WindowsApps\skype.exe')  # Lancer Discord en local
+    return '', 204  # Réponse vide avec code 204 (No Content)
+
+@app.route('/launch_whatsapp')
+def launch_whatsapp():
+    os.startfile(r'C:\Program Files\WindowsApps\5319275A.WhatsAppDesktop_2.2407.10.0_x64__cv1g1gvanyjgm\WhatsApp.exe')  # Lancer Discord en local
+    return '', 204  # Réponse vide avec code 204 (No Content)
+
 @app.route('/success')
 def success():
     return render_template('success.html')

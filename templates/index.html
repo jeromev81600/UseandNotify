@@ -1,49 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="static/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Electrolize&family=Holtwood+One+SC&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
-    <title>Envoyer un message</title>
-</head>
-<body>
-<nav>
-    <img class="logo" alt="Logo" src="static/pictures/StarCitizenEmblem.png">
-<h1 class="titleH1Nav">Tableau de bord</h1>
-    <div class="line"></div>
-    <img class="rsiImg" alt="Logo" src="static/pictures/rsi.png">
-</nav>
-<section class="mainSection">
-    <section class="contactAndPlugSection">
-     <article class="contactArticle">
-      <aside class="formAside">
-       <h2 class="titleH2Form">Contacter un autre joueur</h2>
-        <form class="contactForm" method="post" enctype="multipart/form-data">
-         <label for="to">Destinataire :</label><br>
-           <select id="to" name="to" required>
-             {% for name, _ in recipients.items() %}
-             <option value="{{ name }}">{{ name }}</option>
-             {% endfor %}
-           </select><br><br>
-         <label for="subject">Sujet :</label><br>
-        <input class="subjectInput" type="text" id="subject" name="subject" required><br><br>
-        <label for="bodyMessage">Message :</label><br>
-        <textarea id="bodyMessage" name="body" rows="4" required></textarea><br><br>
-        <label for="file">Pièce jointe :</label><br>
-        <input type="file" id="file" name="file"><br><br>
-        <div class="divSubmitButtons">
-            <input type="submit" name="send_email" value="Envoyer par e-mail">
-            <input type="submit" name="send_sms" value="Envoyer par SMS">
-        </div>
-    </form>
-        </aside>
-    </article>
-    <article class="pluginsAside" ></article>
-        </section>
-<article class="newsArticle"></article>
-</section>
+ <script src="static/javascript/programsLaunchers.js"></script>
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" type="text/css" href="static/style.css" />
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Electrolize&family=Holtwood+One+SC&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+     <title>Envoyer un message</title>
+ </head>
+ <body>
+   <nav>
+     <img class="logo" alt="Logo" src="static/pictures/StarCitizenEmblem.png">
+     <h1 class="titleH1Nav">Tableau de bord</h1>
+     <div class="line"></div>
+     <img class="rsiImg" alt="Logo" src="static/pictures/rsi.png">
+   </nav>
+   <section class="mainSection">
+     <section class="contactAndPlugSection">
+       <article class="contactArticle">
+          <aside class="formAside">
+            <h2 class="titleH2Form">- Contacter un autre joueur -</h2>
+            <form class="contactForm" method="post" enctype="multipart/form-data">
+              <label for="to">Destinataire :</label><br>
+                <select id="to" name="to" required>
+                  {% for name, _ in recipients.items() %}
+                  <option value="{{ name }}">{{ name }}</option>
+                  {% endfor %}
+                </select><br><br>
+              <label for="subject">Sujet :</label><br>
+                <input class="subjectInput" type="text" id="subject" name="subject" required><br><br>
+              <label for="bodyMessage">Message :</label><br>
+                <textarea id="bodyMessage" name="body" rows="4" required></textarea><br><br>
+              <label for="file">Pièce jointe :</label><br>
+                <input type="file" id="file" name="file"><br><br>
+              <div class="divSubmitButtons">
+                <input type="submit" name="send_email" value="Envoyer par e-mail">
+                <input type="submit" name="send_sms" value="Envoyer par SMS">
+              </div>
+            </form>
+           </aside>
+           <aside class="comPlatformAside">
+               <h2 class="titlePlatformAside">- Plateformes -</h2>
+               <a href="#" onclick="launchDiscord(); return false;"><img class="platformImg" alt="Discord" src="static/pictures/discord.png"></a>
+               <a href="#" onclick="launchWhatsapp(); return false;"><img class="platformImg" alt="WhatsApp" src="static/pictures/whatsapp.png"></a>
+               <a href="#" onclick="launchSkype(); return false;"><img class="platformImg" alt="Skype" src="static/pictures/skype.png"></a>
+           </aside>
+       </article>
+       <article class="pluginsAside" ></article>
+     </section>
+       <article class="newsArticle"></article>
+ </section>
 </body>
 </html>

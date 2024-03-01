@@ -118,12 +118,12 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap:10px;
   align-items: center;
   width: 100%;
   min-height:500px;
-  height:calc(100%/1.3);
   border:var(--blueBorder);
-  padding:20px 0 20px 0;
+  padding:50px 0 50px 0;
 }
 
 /* - Formulaire - */
@@ -211,13 +211,31 @@ input[type="submit"] {
  color: var(--textInputColor);
 }
 
+.comPlatformAside{
+  display :flex;
+  align-items:center;
+  padding: 10px 6px 10px 6px;
+  gap : 20px;
+  border-radius:6px;
+  background:var(--backgroundArticle);
+  border-bottom:var(--lightBlueBorder);
+  border-top:var(--lightBlueBorder);
+ }
+
+.titlePlatformAside{
+ font-size:0.74rem;
+}
+
+.platformImg{
+  width:40px;
+}
+
 
 /* ----- Partie Plugins ----- */
 
 .pluginsAside {
   display: flex;
   min-height:100px;
-  height:calc(100%/4);
   border:var(--blueBorder);
 }
 
@@ -282,6 +300,10 @@ input[type="submit"] {
 
 /* ----- Partie contact ----- */
 
+.contactArticle{
+  flex-direction:row;
+  padding:50px 0 70px 0;
+}
 /* - Formulaire - */
 
 .formAside{
@@ -291,6 +313,16 @@ input[type="submit"] {
 .divSubmitButtons {
 justify-content : space-around;
 margin-right:0;
+}
+
+.comPlatformAside{
+  flex-direction : column;
+  padding-top:20px;
+  min-height:487px;
+  }
+
+.platformImg{
+  width:50px;
 }
 
 /* ----- Partie Plugins ----- */
