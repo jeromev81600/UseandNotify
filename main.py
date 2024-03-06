@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_mail import Mail, Message
 from twilio.rest import Client
+from bs4 import BeautifulSoup
 import imaplib
 import email
 from config import *
@@ -22,9 +23,9 @@ auth_token = TWILIO_AUTH_TOKEN
 twilio_phone_number = TWILIO_PHONE_NUMBER
 
 # Configuration boite e-mail pour utilisation avec imap
-EMAIL = 'EMAIL'
-PASSWORD = 'PASSWORD'
-IMAP_SERVER = 'IMAP_SERVER'
+IMAP_SERVER = MY_EMAIL_IMAP_SERVER
+EMAIL = MY_EMAIL
+PASSWORD = MY_PASSWORD
 
 # Liste des destinataires
 recipients = RECIPIENTS
@@ -57,33 +58,7 @@ def send_sms(recipient, message):
         to=recipient
     )
 
-@app.route('/', methods=['GET', 'POST'])
-def index():
-    if request.method == 'POST':
-        to = request.form['to']
-        subject = request.form['subject']
-        body = request.form['bodyMessage']
-
-        recipient_info = recipients.get(to)
-
-        if recipient_info:
-            if 'send_email' in request.form:
-                file = request.files['file']
-                if file:
-                    file_path = os.path.join(UPLOAD_FOLDER, file.filename)
-                    file.save(file_path)
-                    send_email_with_attachment(recipient_info['email'], subject, body, file_path)
-                else:
-                    send_email_with_attachment(recipient_info['email'], subject, body, None)  # Utiliser None comme file_path
-            elif 'send_sms' in request.form:
-                send_sms(recipient_info['phone'], body)
-        else:
-            # Gérer le cas où le destinataire sélectionné n'existe pas
-            pass
-
-    return render_template('index.html', recipients=recipients)
-
-# Récupération et affichage des emails.
+# Fonction pour récupérer les emails via le serveur IMAP
 def fetch_emails():
     try:
         # Connexion au serveur IMAP
@@ -129,17 +104,31 @@ def fetch_emails():
         print(f"Erreur lors de la récupération des e-mails : {e}")
         return [], []
 
-@app.route('/')
-def titles_render():
-    _, emails_titles = fetch_emails()
-    return render_template('index.html', emails_titles=emails_titles)
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    if request.method == 'POST':
+        to = request.form['to']
+        subject = request.form['subject']
+        body = request.form['bodyMessage']
 
+        recipient_info = recipients.get(to)
 
-@app.route('/emails')
-def emails_render():
-    emails_content, _ = fetch_emails()
-    return render_template('emails.html', emails_content=emails_content)
-
+        if recipient_info:
+            if 'send_email' in request.form:
+                file = request.files['file']
+                if file:
+                    file_path = os.path.join(UPLOAD_FOLDER, file.filename)
+                    file.save(file_path)
+                    send_email_with_attachment(recipient_info['email'], subject, body, file_path)
+                else:
+                    send_email_with_attachment(recipient_info['email'], subject, body, None)  # Utiliser None comme file_path
+            elif 'send_sms' in request.form:
+                send_sms(recipient_info['phone'], body)
+        else:
+            # Gérer le cas où le destinataire sélectionné n'existe pas
+            pass
+    emails_content, emails_titles = fetch_emails()
+    return render_template('index.html', recipients=recipients,emails_titles=emails_titles,emails_content=emails_content)
 
 @app.route('/emails/<int:email_id>')
 def email_detail(email_id):
