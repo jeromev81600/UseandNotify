@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_mail import Mail, Message
 from twilio.rest import Client
+import imaplib
+import email
 from config import *
 import os
 
@@ -18,6 +20,14 @@ app.config['MAIL_USE_SSL'] = MAIL_USE_SSL
 account_sid = TWILIO_ACCOUNT_SID
 auth_token = TWILIO_AUTH_TOKEN
 twilio_phone_number = TWILIO_PHONE_NUMBER
+
+# Configuration boite e-mail pour utilisation avec imap
+EMAIL = 'EMAIL'
+PASSWORD = 'PASSWORD'
+IMAP_SERVER = 'IMAP_SERVER'
+
+# Liste des destinataires
+recipients = RECIPIENTS
 
 # Initialisation de l'extension Flask-Mail avec l'application Flask
 mail = Mail(app)
@@ -47,9 +57,6 @@ def send_sms(recipient, message):
         to=recipient
     )
 
-# Liste des destinataires
-recipients = RECIPIENTS
-
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
@@ -70,12 +77,76 @@ def index():
                     send_email_with_attachment(recipient_info['email'], subject, body, None)  # Utiliser None comme file_path
             elif 'send_sms' in request.form:
                 send_sms(recipient_info['phone'], body)
-            return redirect(url_for('success'))
         else:
             # Gérer le cas où le destinataire sélectionné n'existe pas
             pass
 
     return render_template('index.html', recipients=recipients)
+
+# Récupération et affichage des emails.
+def fetch_emails():
+    try:
+        # Connexion au serveur IMAP
+        mail = imaplib.IMAP4_SSL(IMAP_SERVER)
+        mail.login(EMAIL, PASSWORD)
+
+        # Sélection de la boîte de réception
+        mail.select('inbox')
+
+        # Recherche des e-mails
+        result, data = mail.search(None, 'ALL')
+
+        email_contents = []
+        email_titles = []
+
+        # Récupération des e-mails
+        # Trie des e-mails par ordre décroissant et limite à 4 e-mails
+        emails_nums = list(reversed(data[0].split()))[:4]
+        for num in emails_nums:
+            result, message_data = mail.fetch(num, '(RFC822)')
+            raw_email = message_data[0][1]
+            msg = email.message_from_bytes(raw_email)
+
+            # Vérification si l'e-mail est au format multipart
+            if msg.is_multipart():
+                for part in msg.walk():
+                    # Si le contenu est en texte/html
+                    if part.get_content_type() == 'text/html':
+                        email_content = part.get_payload(decode=True).decode('utf-8')
+                        email_contents.append(email_content)
+
+                        # Utiliser BeautifulSoup pour extraire le titre de l'e-mail
+                        soup = BeautifulSoup(email_content, 'html.parser')
+                        title_tag = soup.find('title')
+                        if title_tag:
+                            email_titles.append(title_tag.text)
+
+        # Fermeture de la connexion
+        mail.logout()
+
+        return email_contents, email_titles
+    except Exception as e:
+        print(f"Erreur lors de la récupération des e-mails : {e}")
+        return [], []
+
+@app.route('/')
+def titles_render():
+    _, emails_titles = fetch_emails()
+    return render_template('index.html', emails_titles=emails_titles)
+
+
+@app.route('/emails')
+def emails_render():
+    emails_content, _ = fetch_emails()
+    return render_template('emails.html', emails_content=emails_content)
+
+
+@app.route('/emails/<int:email_id>')
+def email_detail(email_id):
+    emails_content, _ = fetch_emails()
+    email_content = emails_content[email_id]
+    return render_template('email.html', email_content=email_content)
+
 
 @app.route('/launch_discord')
 def launch_discord():
@@ -91,10 +162,6 @@ def launch_skype():
 def launch_whatsapp():
     os.startfile(r'C:\Program Files\WindowsApps\5319275A.WhatsAppDesktop_2.2407.10.0_x64__cv1g1gvanyjgm\WhatsApp.exe')  # Lancer Discord en local
     return '', 204  # Réponse vide avec code 204 (No Content)
-
-@app.route('/success')
-def success():
-    return render_template('success.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

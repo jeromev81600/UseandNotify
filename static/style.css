@@ -18,12 +18,15 @@
 
 --fontFamilyMainTitles:Orbitron;
 --fontFamilyTextAndTitles : Electrolize;
---textColor :white;
+--textColor :#eff0eb;
 --textInputColor:#00d2ff;
---h1Color:white;
+--h1Color:#c2c5b7  ;
 --h2Color:#00d2ff;
---fontSizeH1:100%;
+--fontSizeH1:1.5rem;
 --fontSizeH2:100%;
+
+--paddingTopMainTitles:0.5em;
+--paddingMainBlocks:0 5% 0 5%;
 }
 
 
@@ -47,6 +50,7 @@ h1{
  font-size:var(--fontSizeH1);
  font-family:var(--fontFamilyMainTitles);
  color:var(--h1Color);
+ text-decoration:underline;
 }
 
 h2 {
@@ -59,6 +63,7 @@ h2 {
 p {
   color: var(--textColor);
   font-family:var(--fontFamilyTextAndTitles);
+  font-size:0.8em;
 }
 
 
@@ -80,12 +85,12 @@ nav {
   max-width:200px;
 }
 
-.titleH1Nav{
+.mainTitleH1Nav{
  width:100%;
  text-align:center;
  font-size:35PX;
  padding-right:25px;
- color:#a1acb3;
+ text-decoration:none;
  transform: rotateX(45deg) rotateY(0deg) rotateZ(0deg);
  }
 
@@ -103,16 +108,43 @@ nav {
   gap:1vh;
 }
 
-/* -- Sous-section contact et plugins -- */
+.mainTitles{
+  text-align:center;
+}
 
-.contactAndPlugSection{
+.mainText{
+text-align:justify;
+letter-spacing:1px;;
+}
+
+/* -- Sous-section contact et utilitaires -- */
+
+.contactAndUtilitiesSection{
   display:flex;
   flex-direction:column;
   width:100%;
   gap:1vh;
 }
 
+/* -- Bloc contact et tutoriels -- */
+
+.contactAndTutorialsBlock{
+  display:flex;
+  flex-direction:column;
+  gap:0.5vw;
+}
+
 /* ----- Partie contact ----- */
+
+.contactBlock{
+  display:flex;
+  align-items:center;
+  flex-direction:column;
+  width:100%;
+  padding:var(--paddingMainBlocks);
+  border-radius:6px;
+  border:var(--blueBorder);
+}
 
 .contactArticle {
   display: flex;
@@ -122,15 +154,15 @@ nav {
   align-items: center;
   width: 100%;
   min-height:500px;
-  border:var(--blueBorder);
-  padding:50px 0 50px 0;
+  padding:20px 0 50px 0;
 }
 
 /* - Formulaire - */
 
 .formAside{
   border-radius:6px;
-  width:300px;
+  min-width:350px;
+  max-width:400px;
   background:var(--backgroundArticle);
   border-bottom:var(--lightBlueBorder);
   border-top:var(--lightBlueBorder);
@@ -211,10 +243,15 @@ input[type="submit"] {
  color: var(--textInputColor);
 }
 
+/* - Plateformes de communication - */
+
 .comPlatformAside{
   display :flex;
+  min-width:300px;
+  max-width:330px;
+  justify-content:space-around;
   align-items:center;
-  padding: 10px 6px 10px 6px;
+  padding: 10px;
   gap : 20px;
   border-radius:6px;
   background:var(--backgroundArticle);
@@ -226,8 +263,22 @@ input[type="submit"] {
  font-size:0.74rem;
 }
 
+#mailText{
+  display:none;
+}
+
+.linePlatformAside{
+display:none;
+}
+
 .platformImg{
   width:40px;
+}
+
+/* ----- Partie Tutos ----- */
+
+.tutorialsArticle{
+  display: none;
 }
 
 
@@ -236,17 +287,14 @@ input[type="submit"] {
 .pluginsAside {
   display: flex;
   min-height:100px;
+  border-radius:6px;
   border:var(--blueBorder);
 }
 
-
 /*| ------|- Sous section News -|------ |*/
 
-.newsArticle {
-  display: flex;
-  min-width: 200px;
-  min-height:200px;
-  border:var(--blueBorder);
+.newsSection {
+  display: none;
 }
 
 
@@ -262,7 +310,7 @@ input[type="submit"] {
 
 /*| ------|- Barre de navigation -|----- |*/
 
-.titleH1Nav{
+.mainTitleH1Nav{
   font-size:45px;
   text-align :center;
   max-width:600px;
@@ -291,45 +339,144 @@ input[type="submit"] {
 
 /* -- Sous-section contact et plugins -- */
 
-.contactAndPlugSection{
+.contactAndUtilitiesSection{
   display:flex;
   flex-direction:column;
   width:100%;
   gap:1vh;
 }
 
+/* -- Bloc contact et tutoriels -- */
+
+.contactAndTutorialsBlock{
+flex-direction:row;
+}
+
 /* ----- Partie contact ----- */
 
-.contactArticle{
-  flex-direction:row;
-  padding:50px 0 70px 0;
+.contactBlock{
+  width:30%;
 }
+
+.contactArticle{
+  width:100%;
+}
+
 /* - Formulaire - */
 
-.formAside{
-  width:400px;
- }
-
 .divSubmitButtons {
-justify-content : space-around;
-margin-right:0;
+  justify-content : space-around;
+  margin-right:0;
 }
 
-.comPlatformAside{
-  flex-direction : column;
-  padding-top:20px;
-  min-height:487px;
-  }
+/* - Plateformes de communication - */
+/* Style non modifié */
 
-.platformImg{
-  width:50px;
+/* ----- Partie Tutos ----- */
+
+.tutorialsArticle{
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+  align-items: center;
+  width: 70%;
+  padding:5%;
+  min-height:500px;
+  border-radius:6px;
+  padding:var(--paddingMainBlocks);
+  border:var(--blueBorder);
 }
 
 /* ----- Partie Plugins ----- */
 /* Style non modifié */
 
-
 /*| ------|- Sous section News -|------ |*/
 /* Style non modifié */
+
+}
+
+/* - [ INTERMEDIAIRE ] - */
+
+@media screen and (min-width: 1400px){
+
+/*| ------|- Section principale -|------ |*/
+
+.mainTitles{
+  padding-top:var(--paddingTopMainTitles);
+}
+
+/* -- Sous-section contact et plugins -- */
+
+.contactAndUtilitiesSection{
+  width:90%;
+}
+
+/* ----- Partie contact ----- */
+
+.contactBlock{
+  width:45%;
+}
+
+.contactArticle{
+  flex-direction:row;
+}
+
+/* - Plateformes de communication - */
+
+.comPlatformAside{
+  flex-direction : column;
+  justify-content:flex-start;
+  padding-top:14px;
+  min-width:130px;
+  max-width:150px;
+  height:476px;
+  }
+
+.titlePlatformAside{
+  font-size:var(--fontSizeH2);
+}
+
+#mailText{
+  margin: 10px 0 0 0;
+  display:block;
+}
+.linePlatformAside{
+ display:block;
+ margin-top:10px;
+ width:60%;
+ height:2px;
+ background-color:#0a2839;
+}
+
+.platformImg{
+  width:50px;
+}
+/* ----- Partie Tutos ----- */
+
+.tutorialsArticle{
+ width:50%;
+}
+
+/*| ------|- Sous section News -|------ |*/
+
+.newsSection {
+  display: flex;
+  width:10%;
+  border-radius:6px;
+  border:var(--blueBorder);
+  padding:var(--paddingMainBlocks);
+}
+}
+
+@media screen and (min-width: 1600px){
+
+/* ----- Partie contact ----- */
+
+.contactBlock{
+  width:40%;
+}
+
+/*| ------|- Sous section News -|------ |*/
+
 
 }

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
- <script src="static/javascript/programsLaunchers.js"></script>
  <head>
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,44 +12,73 @@
  <body>
    <nav>
      <img class="logo" alt="Logo" src="static/pictures/StarCitizenEmblem.png">
-     <h1 class="titleH1Nav">Tableau de bord</h1>
+     <h1 class="mainTitleH1Nav">Tableau de bord</h1>
      <div class="line"></div>
      <img class="rsiImg" alt="Logo" src="static/pictures/rsi.png">
    </nav>
    <section class="mainSection">
-     <section class="contactAndPlugSection">
-       <article class="contactArticle">
-          <aside class="formAside">
-            <h2 class="titleH2Form">- Contacter un autre joueur -</h2>
-            <form class="contactForm" method="post" enctype="multipart/form-data">
-              <label for="to">Destinataire :</label><br>
-                <select id="to" name="to" required>
-                  {% for name, _ in recipients.items() %}
-                  <option value="{{ name }}">{{ name }}</option>
-                  {% endfor %}
-                </select><br><br>
-              <label for="subject">Sujet :</label><br>
-                <input class="subjectInput" type="text" id="subject" name="subject" required><br><br>
-              <label for="bodyMessage">Message :</label><br>
-                <textarea id="bodyMessage" name="body" rows="4" required></textarea><br><br>
-              <label for="file">Pièce jointe :</label><br>
-                <input type="file" id="file" name="file"><br><br>
-              <div class="divSubmitButtons">
-                <input type="submit" name="send_email" value="Envoyer par e-mail">
-                <input type="submit" name="send_sms" value="Envoyer par SMS">
-              </div>
-            </form>
-           </aside>
-           <aside class="comPlatformAside">
-               <h2 class="titlePlatformAside">- Plateformes -</h2>
+     <section class="contactAndUtilitiesSection">
+         <div class="contactAndTutorialsBlock">
+             <div class="contactBlock">
+             <h1 class="mainTitles">- CONTACT -</h1>
+                 <p class="mainText">Cette plateforme révolutionnaire repousse les limites de la communication pour vous offrir une expérience inégalée. Elle vous offrira une convergence sans précédent des moyens de communication traditionnels et modernes, vous permettant d'envoyer des messages instantanés ou même de passer des appels vidéo, le tout depuis un seul et même endroit. </p>
+           <article class="contactArticle">
+             <aside class="formAside">
+               <h2 class="titleH2Form">Contacter un autre joueur</h2>
+               <form class="contactForm" method="post" enctype="multipart/form-data">
+                 <label for="to">Destinataire :</label><br>
+                    <select id="to" name="to" required>
+                    {% for name, _ in recipients.items() %}
+                      <option value="{{ name }}">{{ name }}</option>
+                     {% endfor %}
+                    </select><br><br>
+                 <label for="subject">Sujet :</label><br>
+                   <input class="subjectInput" type="text" id="subject" name="subject" required><br><br>
+                 <label for="bodyMessage">Message :</label><br>
+                   <textarea id="bodyMessage" name="body" rows="4" required></textarea><br><br>
+                 <label for="file">Pièce jointe :</label><br>
+                   <input type="file" id="file" name="file"><br><br>
+                 <div class="divSubmitButtons">
+                   <input type="submit" name="send_email" value="Envoyer par e-mail">
+                   <input type="submit" name="send_sms" value="Envoyer par SMS">
+                 </div>
+               </form>
+             </aside>
+             <aside class="comPlatformAside">
+               <h2 class="titlePlatformAside">Plateformes</h2>
                <a href="#" onclick="launchDiscord(); return false;"><img class="platformImg" alt="Discord" src="static/pictures/discord.png"></a>
                <a href="#" onclick="launchWhatsapp(); return false;"><img class="platformImg" alt="WhatsApp" src="static/pictures/whatsapp.png"></a>
                <a href="#" onclick="launchSkype(); return false;"><img class="platformImg" alt="Skype" src="static/pictures/skype.png"></a>
-           </aside>
-       </article>
-       <article class="pluginsAside" ></article>
+                  <div class="linePlatformAside"></div>
+                 <h2 class="titlePlatformAside" id="mailText" >Mails</h2>
+                 <a href="#" onclick="launchGmx(); return false;"><img class="platformImg" alt="GMX" src="static/pictures/gmx.png"></a>
+             </aside>
+           </article>
+                 </div>
+             <article class="tutorialsArticle">
+                 <div class="tutorialsBlock">
+                     <h1 class="mainTitles">- TUTORIELS -</h1>
+                     <p class="mainText">Que vous soyez un explorateur solitaire, un marchand prospère, ou un mercenaire intrépide, nos tutoriels vous fournissent les outils et les connaissances nécessaires pour prospérer dans l'univers dynamique et en constante évolution de Star Citizen. Préparez-vous à embarquer pour des aventures inoubliables et à découvrir tout ce que cet univers épique a à offrir.</p>
+                 </div>
+             </article>
+        </div>
+           <article class="pluginsAside" ></article>
      </section>
-       <article class="newsArticle"></article>
+     <section class="newsSection">
+         <div class="newsBlock">
+                     <h1 class="mainTitles">- NEWS -</h1>
+                     <p class="mainText">Ici, vous trouverez les dernières informations et les nouveautés du jeu.</p>
+                 <aside class="newsAside">
+                    <ul id="emails-titles">
+                      {% for email_title in emails_titles %}
+                        <li><a href="/emails/{{ loop.index0 }}">{{ email_title | safe }}</a></li>
+                      {% endfor %}
+                    </ul>
+                 </aside>
+         </div>
+     </section>
  </section>
+ <script src="static/javascript/programsLaunchers.js"></script>
+ <script src="static/javascript/recoveryHTML.js"></script>
 </body>
 </html>
