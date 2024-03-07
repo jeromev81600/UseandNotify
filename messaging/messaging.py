@@ -10,8 +10,10 @@ from config.config import *
 # Initialisation de l'extension Flask-Mail avec l'application Flask
 mail = Mail()
 
+
 def init_app(app):
     mail.init_app(app)
+
 
 # Configuration des informations d'identification Twilio
 account_sid = TWILIO_ACCOUNT_SID
@@ -69,8 +71,8 @@ def fetch_emails():
         email_titles = []
 
         # Récupération des e-mails
-        # Trie des e-mails par ordre décroissant et limite à 4 e-mails
-        emails_nums = list(reversed(data[0].split()))[:4]
+        # Trie des e-mails par ordre décroissant et limite à 5 e-mails
+        emails_nums = list(reversed(data[0].split()))[:5]
         for num in emails_nums:
             result, message_data = mail.fetch(num, '(RFC822)')
             raw_email = message_data[0][1]

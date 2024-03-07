@@ -24,7 +24,7 @@
                  <p class="mainText">Cette plateforme révolutionnaire repousse les limites de la communication pour vous offrir une expérience inégalée. Elle vous offrira une convergence sans précédent des moyens de communication traditionnels et modernes, vous permettant d'envoyer des messages instantanés ou même de passer des appels vidéo, le tout depuis un seul et même endroit. </p>
            <article class="contactArticle">
              <aside class="formAside">
-               <h2 class="titleH2Form">Contacter un autre joueur</h2>
+               <h2 class="titlesH2Contact">Contacter un autre joueur</h2>
                <form class="contactForm" method="post" enctype="multipart/form-data">
                  <label for="to">Destinataire :</label><br>
                     <select id="to" name="to" required>
@@ -45,13 +45,17 @@
                </form>
              </aside>
              <aside class="comPlatformAside">
-               <h2 class="titlePlatformAside">Plateformes</h2>
+               <h2 class="titlesH2Contact">Plateformes</h2>
+                 <div class="platformLinks">
                <a href="#" onclick="launchDiscord(); return false;"><img class="platformImg" alt="Discord" src="static/pictures/discord.png"></a>
                <a href="#" onclick="launchWhatsapp(); return false;"><img class="platformImg" alt="WhatsApp" src="static/pictures/whatsapp.png"></a>
                <a href="#" onclick="launchSkype(); return false;"><img class="platformImg" alt="Skype" src="static/pictures/skype.png"></a>
                   <div class="SeparationLine"></div>
+                     <div class="mailsPlatefBlock">
                  <h2 class="titlePlatformAside" id="mailText" >Mails</h2>
                  <a href="https://www.gmx.fr/" target="_blank"><img class="platformImg" alt="GMX" src="static/pictures/gmx.png"></a>
+              </div>
+               </div>
              </aside>
            </article>
                  </div>
@@ -59,13 +63,22 @@
                  <div class="tutorialsBlock">
                      <h1 class="mainTitles">- TUTORIELS -</h1>
                      <p class="mainText">Que vous soyez un explorateur solitaire, un marchand prospère, ou un mercenaire intrépide, nos tutoriels vous fournissent les outils et les connaissances nécessaires pour prospérer dans l'univers dynamique et en constante évolution de Star Citizen. Préparez-vous à embarquer pour des aventures inoubliables et à découvrir tout ce que cet univers épique a à offrir.</p>
+                     <ul class="mainTutorialsList">
+                         <li><a href="https://robertsspaceindustries.com/star-citizen/howto/" target="_blank"><span class="tutorialTitleSpan">RSI - HOW TO PLAY</span><br>le tutoriel officiel de star citizen</a></li>
+                         <li><a href="https://starcitizen-fr.org/tutorial/" target="_blank"><span class="tutorialTitleSpan">Tutoriel de la communauté francophone</span><br>le tutoriel de la communauté francophone de star citizen</a></li>
+                         <li><a href="https://www.youtube.com/watch?v=Jia4BmYunU4&ab_channel=SpaceTomato" target="_blank"><span class="tutorialTitleSpan">Tutoriel youtube par spacetomato</span><br>le tutoriel de l'organisation spacetomato</a></li>
+                         <li><a href="https://www.youtube.com/watch?v=O4T70F43dJ8&ab_channel=MaxFlyGaming" target="_blank"><span class="tutorialTitleSpan">Tutoriel youtube par Maxfly gaming</span><br>le tutoriel de MaxFly Gaming</a></li>
+                         <li><a href="https://www.youtube.com/channel/UCKdNivsbhJuvPGGemtxpWsQ" target="_blank"><span class="tutorialTitleSpan">Stanbatros</span><br>la chaîne you tube française de Stanbatros</a></li>
+                     </ul>
                  </div>
              </article>
         </div>
-           <article class="pluginsAside" ></article>
+           <article class="pluginsArticle" >
+                <h2 class="titlesH2Contact">Plugins</h2>
+           </article>
      </section>
      <section class="newsSection">
-                              <h1 class="mainTitles">- INFOS -</h1>
+         <h1 class="mainTitles">- INFOS -</h1>
                      <p class="mainText">Ici, vous trouverez les dernières informations et les nouveautés du jeu.</p>
                  <aside class="newsAside">
                     <ul id="emails-titles">
@@ -76,6 +89,9 @@
                         </li>
                       {% endfor %}
                     </ul>
+                     <div class="blockChanel">
+                         <a href=" https://www.youtube.com/channel/UCOTusB9OlUGXIVwx84HQGog" target="_blank"><span class="starCitChanSpan">Chaîne You tube officielle</span><img class="starCitChanImg" alt="StarCitizen Chanel" src="static/pictures/starCitizenChanel.jpg"></a>
+                     </div>
                  </aside>
              </section>
  </section>
