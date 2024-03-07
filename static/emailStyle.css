@@ -1,0 +1,25 @@
+#navMail{
+  background: no-repeat url("../static/pictures/starsbackground.jpg");
+  background-size: cover;
+}
+
+.mailSection{
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+
+.mailArticle{
+  width:80%;
+  background:var(--backgroundArticle);
+  border-bottom:var(--lightBlueBorder);
+  border-left:var(--blueBorder);
+  border-right:var(--blueBorder);
+  border-top:var(--lightBlueBorder);
+}
+
+.newsletterTitle{
+ font-size:2em;
+ margin:40px;
+}

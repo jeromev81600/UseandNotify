@@ -35,7 +35,6 @@
 body {
   min-height: 100vh;
   margin: 2vh 0 2vh 0;
-  background: black;
   display: flex;
   flex-direction:column;
   background: no-repeat url("./pictures/starsbackground.jpg");
@@ -66,6 +65,9 @@ p {
   font-size:0.8em;
 }
 
+.SeparationLine{
+display:none;
+}
 
 /*| ------|- Barre de navigation -|----- |*/
 
@@ -267,10 +269,6 @@ input[type="submit"] {
   display:none;
 }
 
-.linePlatformAside{
-display:none;
-}
-
 .platformImg{
   width:40px;
 }
@@ -399,6 +397,16 @@ flex-direction:row;
 
 @media screen and (min-width: 1400px){
 
+/*| -------|- Eléments globaux -|------- |*/
+
+.SeparationLine{
+ display:block;
+ margin-top:10px;
+ width:60%;
+ height:2px;
+ background-color:#0a2839;
+}
+
 /*| ------|- Section principale -|------ |*/
 
 .mainTitles{
@@ -440,13 +448,6 @@ flex-direction:row;
   margin: 10px 0 0 0;
   display:block;
 }
-.linePlatformAside{
- display:block;
- margin-top:10px;
- width:60%;
- height:2px;
- background-color:#0a2839;
-}
 
 .platformImg{
   width:50px;
@@ -461,10 +462,51 @@ flex-direction:row;
 
 .newsSection {
   display: flex;
+  flex-direction:column;
   width:10%;
   border-radius:6px;
+  padding: 0 2% 0 2%;
   border:var(--blueBorder);
-  padding:var(--paddingMainBlocks);
+}
+
+.newsAside{
+margin-top:20px;
+}
+
+#emails-titles{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap : 30px;
+  min-height:400px;
+  border-radius:6px;
+  margin-top:0;
+  padding:0 10% 15% 10%;
+  list-style : none;
+  background:var(--backgroundArticle);
+  border-bottom:var(--lightBlueBorder);
+  border-top:var(--lightBlueBorder);
+}
+.newslettersTitle{
+margin-top:0;
+}
+
+.liEmailTitle{
+display:flex;
+align-items:center;
+gap:5px;
+flex-direction:column;
+
+}
+
+.emailTitle{
+ font-size: 11px;
+  text-transform: uppercase;
+  text-decoration:none;
+  color: #fff;
+  font-weight: 700;
+  font-family:var(--fontFamilyTextAndTitles);
 }
 }
 

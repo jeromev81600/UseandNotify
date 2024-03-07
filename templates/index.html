@@ -49,9 +49,9 @@
                <a href="#" onclick="launchDiscord(); return false;"><img class="platformImg" alt="Discord" src="static/pictures/discord.png"></a>
                <a href="#" onclick="launchWhatsapp(); return false;"><img class="platformImg" alt="WhatsApp" src="static/pictures/whatsapp.png"></a>
                <a href="#" onclick="launchSkype(); return false;"><img class="platformImg" alt="Skype" src="static/pictures/skype.png"></a>
-                  <div class="linePlatformAside"></div>
+                  <div class="SeparationLine"></div>
                  <h2 class="titlePlatformAside" id="mailText" >Mails</h2>
-                 <a href="#" onclick="launchGmx(); return false;"><img class="platformImg" alt="GMX" src="static/pictures/gmx.png"></a>
+                 <a href="https://www.gmx.fr/" target="_blank"><img class="platformImg" alt="GMX" src="static/pictures/gmx.png"></a>
              </aside>
            </article>
                  </div>
@@ -65,18 +65,19 @@
            <article class="pluginsAside" ></article>
      </section>
      <section class="newsSection">
-         <div class="newsBlock">
-                     <h1 class="mainTitles">- NEWS -</h1>
+                              <h1 class="mainTitles">- INFOS -</h1>
                      <p class="mainText">Ici, vous trouverez les dernières informations et les nouveautés du jeu.</p>
                  <aside class="newsAside">
                     <ul id="emails-titles">
+                           <h2 class="newslettersTitle">NEWSLETTERS</h2>
                       {% for email_title in emails_titles %}
-                        <li><a href="/emails/{{ loop.index0 }}">{{ email_title | safe }}</a></li>
+                        <li class="liEmailTitle"><a class="emailTitle" href="/emails/{{ loop.index0 }}">{{ email_title | safe }}</a>
+                            <div class="SeparationLine"></div>
+                        </li>
                       {% endfor %}
                     </ul>
                  </aside>
-         </div>
-     </section>
+             </section>
  </section>
  <script src="static/javascript/programsLaunchers.js"></script>
  <script src="static/javascript/recoveryHTML.js"></script>
