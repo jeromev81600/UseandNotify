@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for
 import subprocess
 import time
-from launcher.launcher import *
+import os
+import webbrowser
+from waitress import serve
 from messaging.messaging import *
 from config.config import *
 
@@ -21,19 +23,6 @@ app.config['MAIL_USE_SSL'] = MAIL_USE_SSL
 # Initialisation de Flask-Mail
 init_app(app)
 
-def main():
-    # Lancement de l'application Flask en arrière-plan
-    start_flask_app()
-
-    while True:
-        # Vérification du processus du lanceur Star Citizen
-        if check_RSILauncher_process():
-            # Si le lanceur est en cours d'exécution, attend avant de vérifier à nouveau
-            time.sleep(60)  # Attendez une minute
-        else:
-            # Si le lanceur n'est pas en cours d'exécution, arrêtez la boucle
-            break
-
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -50,9 +39,9 @@ def index():
                 if file:
                     file_path = os.path.join(UPLOAD_FOLDER, file.filename)
                     file.save(file_path)
-                    send_email_with_attachment(app,recipient_info['email'], subject, body, file_path)
+                    send_email_with_attachment(app, recipient_info['email'], subject, body, file_path)
                 else:
-                    send_email_with_attachment(app,recipient_info['email'], subject, body,None)
+                    send_email_with_attachment(app, recipient_info['email'], subject, body, None)
             elif 'send_sms' in request.form:
                 send_sms(recipient_info['phone'], body)
         else:
@@ -93,5 +82,6 @@ def launch_skype():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
-    main()
+    # Ouvre le navigateur par défaut et Démarre le serveur Waitress
+    serve(app, host=LOCALHOST, port=PORT)
+    webbrowser.open('http://{LOCALHOST}:{PORT}')
