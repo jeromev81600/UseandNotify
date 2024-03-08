@@ -82,7 +82,7 @@ def launch_skype():
 
 
 if __name__ == '__main__':
-    # app.run(debug=True)
+    app.run(debug=True)
     # Ouvre le navigateur par défaut et Démarre le serveur Waitress
-    serve(app, host=LOCALHOST, port=PORT)
-    webbrowser.open('http://{LOCALHOST}:{PORT}')
+    # serve(app, host=LOCALHOST, port=PORT)
+    # webbrowser.open('http://{LOCALHOST}:{PORT}')

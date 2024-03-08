@@ -1,9 +1,9 @@
-/*------------------------------||[ CSS - index.html ]||---------------------------------*/
+/*------------------------------------------ ||[ CSS - index.html ]|| ----------------------------------------*/
 
-/* - [ MOBILE FIRST ] - */
+
+/* --------------------------------------- [ MOBILE FIRST ] ----------------------------------------- */
 
 /*| ---------|- Variables CSS -|-------- |*/
-
 
 :root{
 --backgroundArticle:rgba(13,46,66,.5);
@@ -39,9 +39,10 @@ html{ background: no-repeat url("./pictures/starsbackground.jpg");
 
 body {
   width:100%;
+  margin:0 auto;
   min-height: 100dvh;
-  margin: 2vh 0 2vh 0;
   display: flex;
+  align-items:center;
   flex-direction:column;
   background: no-repeat url("./pictures/starsbackground.jpg");
   background-size: cover;
@@ -73,7 +74,11 @@ p,a{
 }
 
 .SeparationLine{
-  display:none;
+  display:block;
+  margin-top:10px;
+  width:60%;
+  height:2px;
+  background-color:#0a2839;
 }
 
 /*| ------|- Barre de navigation -|----- |*/
@@ -82,7 +87,8 @@ nav {
  display:flex;
  justify-content:space-between;
  align-items:center;
- min-height: 10dvh;
+ width:100%;
+ max-height: 12dvh;
  padding:10px;
  border:var(--blueBorder);
  border-top:var(--lightBlueBorder);
@@ -97,13 +103,13 @@ nav {
 .mainTitleH1Nav{
   width:100%;
   text-align:center;
-  font-size:35PX;
+  font-size:2rem;
   padding-right:25px;
   text-decoration:none;
   transform: rotateX(45deg) rotateY(0deg) rotateZ(0deg);
  }
 
-.rsiImg,.line  {
+.rsiImg,.line {
   display:none;
  }
 
@@ -112,18 +118,156 @@ nav {
 .mainSection {
   margin:4.5vh;
   display: flex;
-  flex-direction:column;
+  align-items:stretch;
+  flex-direction:column-reverse;
   height:100%;
   gap:1vh;
 }
 
 .mainTitles{
   text-align:center;
+  margin :0;
+  margin-top : 25px;
 }
 
 .mainText{
   text-align:justify;
-  letter-spacing:1px;;
+  letter-spacing:0.5px;
+}
+
+/* -- Sous-section contact et utilitaires -- */
+.contactAndUtilitiesSection {
+  display: none;
+}
+
+/* -- Bloc contact et tutoriels -- */
+/* ----- Partie contact ----- */
+/* ----- Partie Tutos ----- */
+/* ----- Partie Plugins ----- */
+
+
+/*| ------|- Sous section News -|------ |*/
+
+.newsSection {
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: center;
+  height:100%;
+  border-radius:6px;
+  padding: 0 5% 2% 5%;
+  border:var(--blueBorder);
+}
+
+.newsAside{
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: center;
+  margin-top:10dh;
+}
+
+#emails-titles{
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  align-items:center;
+  gap : 30px;
+  max-width:70%;
+  border-radius:6px;
+  margin-bottom :3em;
+  padding:5% 5% 10% 5%;
+  list-style : none;
+  background:var(--backgroundArticle);
+  border-bottom:var(--lightBlueBorder);
+  border-top:var(--lightBlueBorder);
+}
+
+.newslettersTitle{
+  margin-top:0;
+}
+
+.liEmailTitle{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  flex-direction:column;
+}
+
+.emailTitle{
+  font-size: 11px;
+  text-transform: uppercase;
+  text-decoration:none;
+  color: #fff;
+  font-weight: 700;
+  font-family:var(--fontFamilyTitles);
+}
+
+.blockChanel{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+.blockChanel a{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 0 10px 0;
+  border-radius:6px;
+  border:var(--blueBorder);
+}
+
+.starCitChanSpan{
+  text-align:center;
+  text-transform: uppercase;
+  font-size:1em;
+  font-weight:bold;
+  color: var(--h2Color);
+  font-family:var(--fontFamilyTitles);
+}
+
+.starCitChanImg{
+  padding-top:5px;
+  border-radius:10px;
+  width:50%;
+}
+
+
+/* --------------------------------------- [ TABLETTES / KINDLES ] ----------------------------------------- */
+
+@media screen and (min-width: 768px){
+
+/*| ------|- Barre de navigation -|----- |*/
+
+.mainTitleH1Nav{
+  font-size:45px;
+  text-align :center;
+  max-width:600px;
+  padding-right :5px;
+ }
+
+.line{
+ display:block;
+ width:100%;
+ height:2px;
+ background-color:#0a2839;
+}
+
+.rsiImg{
+  display:block;
+  margin-right:25px;
+  width:70px;
+  padding-left:35px;
+ }
+
+/*| ------|- Section principale -|------ |*/
+
+.mainSection {
+  flex-direction:row;
+  justify-content:space-between;
 }
 
 /* -- Sous-section contact et utilitaires -- */
@@ -131,26 +275,130 @@ nav {
 .contactAndUtilitiesSection{
   display:flex;
   flex-direction:column;
-  width:100%;
+  justify-content:space-between;
+  max-width:70%;
   height:100%;
+}
+/* -- Bloc contact et tutoriels -- */
+
+.contactAndTutorialsBlock{
+  display:flex;
+  flex-direction:column;
+  width:100%;
+  gap:1vw;
+}
+
+/* ----- Partie contact ----- */
+.contactBlock{
+  display:none;
+}
+
+/* ----- Partie Tutos ----- */
+
+.tutorialsArticle{
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+  align-items: center;
+  width: 100%;
+  min-height:500px;
+  border-radius:6px;
+  padding:var(--paddingMainBlocks);
+  border:var(--blueBorder);
+}
+
+.mainTutorialsList{
+  padding:0;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  list-style : none;
+  width:100%;
+  height:60%;
+  gap:5%;
+   }
+
+.mainTutorialsList li{
+  width:6em;
+  height:10em;
+  padding:10px;
+  border-radius:6px;
+  background:var(--backgroundArticle);
+  border:var(--blueBorder);
+}
+
+.mainTutorialsList li:hover{
+  border:var(--lightBlueBorder);
+}
+
+.tutorialTitleSpan{
+  text-transform: uppercase;
+  font-size:var(--fontSizeH2);
+  color: var(--h2Color);
+  font-family:var(--fontFamilyTitles);
+}
+
+/* ----- Partie Plugins ----- */
+
+.pluginsArticle {
+  display:none;
+}
+
+/*| ------|- Sous section News -|------ |*/
+
+.newsSection {
+  max-width:20%;
+  padding: 0 2% 2% 2%;
+}
+
+#emails-titles{
+  min-height:400px;
+  padding:15% 10% 15% 10%;
+}
+
+.newslettersTitle{
+  margin-top:0;
+}
+
+}
+
+/* -------------------------------------------- [ NOTEBOOK ] ----------------------------------------------- */
+
+@media screen and (min-width: 1080px){
+
+/*| ------|- Corps du document -|------- |*/
+/* Style non modifié */
+
+/*| -------|- Eléments globaux -|------- |*/
+/* Style non modifié */
+
+/*| ------|- Barre de navigation -|----- |*/
+/* Style non modifié */
+
+/*| ------|- Section principale -|------ |*/
+
+/* -- Sous-section contact et utilitaires -- */
+
+.contactAndUtilitiesSection{
+  display:flex;
+  flex-direction:column;
+  max-width:80%;
   gap:1vh;
 }
 
 /* -- Bloc contact et tutoriels -- */
 
 .contactAndTutorialsBlock{
-  display:flex;
-  flex-direction:column;
-  gap:0.5vw;
+flex-direction:row;
 }
 
-/* ----- Partie contact ----- */
+ /* ----- Partie contact ----- */
 
 .contactBlock{
   display:flex;
   align-items:center;
   flex-direction:column;
-  width:100%;
+  width:30%;
   border-radius:6px;
   padding:var(--paddingMainBlocks);
   border:var(--blueBorder);
@@ -172,7 +420,8 @@ nav {
 .formAside{
   border-radius:6px;
   width:80dvw;
-  max-width:350px;
+  max-width:275px;
+  height:100%;
   background:var(--backgroundArticle);
   border-bottom:var(--lightBlueBorder);
   border-top:var(--lightBlueBorder);
@@ -240,8 +489,8 @@ label{
   display: flex;
   gap:1.5vh;
   margin-top : 20px;
-  margin-right:30px;
-  justify-content:space-between;
+  margin-right:0;
+  justify-content : space-around;
 }
 
 input[type="submit"] {
@@ -259,8 +508,8 @@ input[type="submit"] {
   display :flex;
   flex-wrap:wrap;
   width:75dvw;
-  max-width:330px;
-  height:auto;
+  max-width:255px;
+  height:100%;
   justify-content:center;
   align-items:center;
   padding: 10px;
@@ -293,197 +542,35 @@ input[type="submit"] {
 /* ----- Partie Tutos ----- */
 
 .tutorialsArticle{
-  display: none;
-}
-
-
-/* ----- Partie Plugins ----- */
-
-.pluginsArticle {
-  display: flex;
-  height:100%;
-  border-radius:6px;
-  padding:var(--paddingMainBlocks);
-  border:var(--blueBorder);
-}
-
-/*| ------|- Sous section News -|------ |*/
-
-.newsSection {
-  display: none;
-}
-
-
-/* - [ DESKTOP ] - */
-
-@media screen and (min-width: 1100px){
-
-/*| ------|- Corps du document -|------- |*/
-/* Style non modifié */
-
-/*| -------|- Eléments globaux -|------- |*/
-/* Style non modifié */
-
-/*| ------|- Barre de navigation -|----- |*/
-
-.mainTitleH1Nav{
-  font-size:45px;
-  text-align :center;
-  max-width:600px;
-  padding-right :5px;
- }
-
-.line{
- display:block;
- width:100%;
- height:2px;
- background-color:#0a2839;
-}
-
-.rsiImg{
-  display:block;
-  margin-right:25px;
-  width:70px;
-  padding-left:35px;
- }
-
-/*| ------|- Section principale -|------ |*/
-
-.mainSection {
-  flex-direction :row;
-}
-
-/* -- Sous-section contact et plugins -- */
-
-.contactAndUtilitiesSection{
-  display:flex;
-  flex-direction:column;
-  width:100%;
-  gap:1vh;
-}
-
-/* -- Bloc contact et tutoriels -- */
-
-.contactAndTutorialsBlock{
-flex-direction:row;
-}
-
-/* ----- Partie contact ----- */
-
-.contactBlock{
-  width:30%;
-}
-
-.contactArticle{
-  width:100%;
-}
-
-/* - Formulaire - */
-
-.formAside{
-  min-width:350px;
-}
-
-.divSubmitButtons {
-  justify-content : space-around;
-  margin-right:0;
-}
-
-/* - Plateformes de communication - */
-/* Style non modifié */
-
-/* ----- Partie Tutos ----- */
-
-.tutorialsBlock{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-}
-
-.tutorialsArticle{
-  display: flex;
-  flex-direction: column;
-  gap:10px;
-  align-items: center;
   width: 70%;
-  padding:5%;
-  min-height:500px;
-  border-radius:6px;
-  padding:var(--paddingMainBlocks);
-  border:var(--blueBorder);
-}
-
-.mainTutorialsList{
-  padding:0;
-  margin-top:3em;
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  list-style : none;
-  width:80%;
-  height:80%;
-  gap:5%;
-   }
-
-.mainTutorialsList li{
-  width:6em;
-  height:10em;
-  padding:10px;
-  border-radius:6px;
-  background:var(--backgroundArticle);
-  border:var(--blueBorder);
-}
-
-.mainTutorialsList li:hover{
-  border:var(--lightBlueBorder);
-}
-
-.tutorialTitleSpan{
-  text-transform: uppercase;
-  font-size:var(--fontSizeH2);
-  color: var(--h2Color);
-  font-family:var(--fontFamilyTitles);
 }
 
 /* ----- Partie Plugins ----- */
 /* Style non modifié */
 
 /*| ------|- Sous section News -|------ |*/
-/* Style non modifié */
 
 }
 
-/* - [ INTERMEDIAIRE ] - */
+
+/* --------------------------------------------- [ DESKTOP ] ----------------------------------------------- */
 
 @media screen and (min-width: 1400px){
 
 /*| -------|- Eléments globaux -|------- |*/
 
-.SeparationLine{
- display:block;
- margin-top:10px;
- width:60%;
- height:2px;
- background-color:#0a2839;
-}
-
 /*| ------|- Section principale -|------ |*/
-
-.mainTitles{
-  padding-top:var(--paddingTopMainTitles);
-}
 
 /* -- Sous-section contact et plugins -- */
 
 .contactAndUtilitiesSection{
-  width:90%;
+  max-width:85%;
 }
 
 /* ----- Partie contact ----- */
 
 .formAside{
-  max-width:380px;
-  height:100%;
+  max-width:350px;
 }
 
 .contactBlock{
@@ -501,7 +588,6 @@ flex-direction:row;
   justify-content:flex-start;
   padding:0;
   max-width:135px;
-  height:100%;
   }
 
 .comPlatformAside h2{
@@ -535,103 +621,39 @@ flex-direction:row;
 /* ----- Partie Tutos ----- */
 
 .tutorialsArticle{
- width:50%;
+ width:55%;
 }
-
-.mainTutorialsList{
-  width:100%;
-   }
 
 /* ----- Partie Plugins ----- */
 
-
-/*| ------|- Sous section News -|------ |*/
-
-.newsSection {
+.pluginsArticle {
   display: flex;
   flex-direction:column;
-  width:10%;
+  align-items:center;
   height:100%;
   border-radius:6px;
-  padding: 0 2% 2% 2%;
+  padding:var(--paddingMainBlocks);
+  padding-bottom:3%;
   border:var(--blueBorder);
 }
 
-.newsAside{
-margin-top:10dh;
-}
-
-#emails-titles{
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-start;
-  align-items:center;
-  gap : 30px;
-  min-height:400px;
-  border-radius:6px;
-  margin-bottom :3em;
-  padding:15% 10% 15% 10%;
-  list-style : none;
-  background:var(--backgroundArticle);
-  border-bottom:var(--lightBlueBorder);
-  border-top:var(--lightBlueBorder);
-}
-
-.newslettersTitle{
-  margin-top:0;
-}
-
-.liEmailTitle{
-  display:flex;
-  align-items:center;
-  gap:5px;
-  flex-direction:column;
-}
-
-.emailTitle{
-  font-size: 11px;
-  text-transform: uppercase;
-  text-decoration:none;
-  color: #fff;
-  font-weight: 700;
-  font-family:var(--fontFamilyTitles);
-}
-
-.blockChanel{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-}
-
-.blockChanel a{
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  align-items:center;
-  padding:10px 0 10px 0;
-  border-radius:6px;
-  border:var(--blueBorder);
-}
-
-.starCitChanSpan{
-  text-align:center;
-  text-transform: uppercase;
-  font-size:1em;
-  font-weight:bold;
-  color: var(--h2Color);
-  font-family:var(--fontFamilyTitles);
-}
-
-.starCitChanImg{
-  padding-top:5px;
-  border-radius:10px;
-  width:50%;
+/*| ------|- Sous section News -|------ |*/
+.newsSection {
+  max-width:15%;
 }
 
 }
+
+
+/* ---------------------------------------- [ LARGE SCREEN - HD ] ------------------------------------------ */
 
 @media screen and (min-width: 1600px){
+
+/* -- Sous-section contact et plugins -- */
+
+.contactAndUtilitiesSection{
+  max-width:90%;
+}
 
 /* ----- Partie contact ----- */
 
@@ -641,12 +663,12 @@ margin-top:10dh;
 
 /*| ------|- Sous section News -|------ |*/
 
+.newsSection {
+  max-width:10%;
+}
+
 #emails-titles{
   margin-bottom :4em;
 }
-
-.mainTutorialsList{
-  width:100%;
-   }
 
 }
