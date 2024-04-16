@@ -88,7 +88,7 @@ nav {
  justify-content:space-between;
  align-items:center;
  width:100%;
- max-height: 12dvh;
+ max-height: 16dvh;
  padding:10px;
  border:var(--blueBorder);
  border-top:var(--lightBlueBorder);
